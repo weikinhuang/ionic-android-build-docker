@@ -1,0 +1,6 @@
+#!/bin/bash
+
+ANDROID_SDK_PACKAGES="$(echo "$1" | sed 's/[[:space:]]\+/,/g' | sed 's/,\+/,/g' | sed 's/,$//')"
+android-accept-licenses \
+        "android update sdk --no-ui --all --force --filter ${ANDROID_SDK_PACKAGES}" \
+        '.*'
