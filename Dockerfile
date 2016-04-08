@@ -26,11 +26,11 @@ RUN dnf install -y \
 
 # script to accept android license
 # https://github.com/journeyapps/android-sdk-installer
-COPY android-accept-licenses /usr/bin/android-accept-licenses
+COPY utils/android-accept-licenses /usr/bin/android-accept-licenses
 # script to wait for android emulator
 # https://github.com/travis-ci/travis-cookbooks/blob/master/community-cookbooks/android-sdk/files/default/android-wait-for-emulator
-COPY android-wait-for-emulator /usr/bin/android-wait-for-emulator
-COPY android-sdk-install /usr/bin/android-sdk-install
+COPY utils/android-wait-for-emulator /usr/bin/android-wait-for-emulator
+COPY utils/android-sdk-install /usr/bin/android-sdk-install
 RUN chmod +x /usr/bin/android-accept-licenses \
     && chmod +x /usr/bin/android-sdk-install \
     && chmod +x /usr/bin/android-wait-for-emulator
@@ -77,6 +77,7 @@ ENV ANDROID_SDK_INSTALL     platform-tools \
 RUN android-sdk-install "${ANDROID_SDK_INSTALL}"
 
 # install spoon for google console deploys
+# https://github.com/fastlane/fastlane/tree/master/supply
 ENV SUPPLY_VERSION          0.6.2
 RUN gem install --no-ri --no-rdoc supply -v ${SUPPLY_VERSION}
 
@@ -87,10 +88,12 @@ RUN curl -sSLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux
     && rm "node-v$NODE_VERSION-linux-x64.tar.gz"
 
 # install ionic dependencies
+ENV BOWER_VERSION           1.7.9
 ENV CORDOVA_VERSION         6.1.1
 ENV IONIC_VERSION           1.7.14
 ENV GULP_VERSION            1.2.1
 RUN npm install --global --quiet --production \
+        bower@${BOWER_VERSION} \
         cordova@${CORDOVA_VERSION} \
         ionic@${IONIC_VERSION} \
         gulp-cli@${GULP_VERSION} \
