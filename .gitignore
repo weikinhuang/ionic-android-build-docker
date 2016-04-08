@@ -1,0 +1,17 @@
+# Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+node_modules/
+bower_components/
+www/lib
+
+# cordova/ionic
+platforms/
+plugins/
+
+# IDE/OS files
+.idea
+thumbs.db
+.DS_Store
+
+# generated files
+www/dist/*
