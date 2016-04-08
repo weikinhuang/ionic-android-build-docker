@@ -92,9 +92,17 @@ ENV BOWER_VERSION           1.7.9
 ENV CORDOVA_VERSION         6.1.1
 ENV IONIC_VERSION           1.7.14
 ENV GULP_VERSION            1.2.1
-RUN npm install --global --quiet --production \
-        bower@${BOWER_VERSION} \
-        cordova@${CORDOVA_VERSION} \
-        ionic@${IONIC_VERSION} \
-        gulp-cli@${GULP_VERSION} \
-    && npm cache clear
+# install global node modules and clear cache
+RUN mkdir -p \
+        /tmp/.npm \
+        /tmp/.npm-tmp \
+    && NPM_CONFIG_CACHE=/tmp/.npm \
+        NPM_CONFIG_TMP=/tmp/.npm-tmp \
+        npm install --global --quiet --production \
+            bower@${BOWER_VERSION} \
+            cordova@${CORDOVA_VERSION} \
+            ionic@${IONIC_VERSION} \
+            gulp-cli@${GULP_VERSION} \
+    && rm -rf \
+        /tmp/.npm \
+        /tmp/.npm-tmp
