@@ -1,0 +1,12 @@
+sudo: required
+
+language: node
+
+services:
+  - docker
+
+before_install:
+  - docker build -t $(cat NAME) .
+
+script:
+  - docker run --rm --volume tests/travis-sample-app.sh:/travis-sample-app.sh $(cat NAME) /bin/bash /travis-sample-app.sh
