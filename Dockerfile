@@ -111,3 +111,27 @@ RUN mkdir -p \
     && rm -rf \
         /tmp/.npm \
         /tmp/.npm-tmp
+
+# pre download/install the version of gradle used for the installed version of cordova
+RUN cd /tmp \
+    && export NPM_CONFIG_CACHE=/tmp/.npm \
+    && export NPM_CONFIG_TMP=/tmp/.npm-tmp \
+    && mkdir -p \
+        /tmp/.npm \
+        /tmp/.npm-tmp \
+    && echo n | ionic start test-app tabs \
+    && cd test-app \
+    && ionic platform add android \
+    && ionic build android \
+    && rm -rf \
+        /root/.android/debug.keystore \
+        /root/.config \
+        /root/.cordova \
+        /root/.ionic \
+        /root/.v8flags.*.json \
+        /tmp/.npm \
+        /tmp/.npm-tmp \
+        /tmp/hsperfdata_root/* \
+        /tmp/ionic-starter-* \
+        /tmp/native-platform*dir \
+        /tmp/test-app
