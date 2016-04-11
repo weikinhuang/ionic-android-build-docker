@@ -8,6 +8,9 @@
 
 This image provides a base image for which Ionic based android apps can be built upon or extended from to create an development environment.
 
+[![Build Status](https://travis-ci.org/weikinhuang/ionic-android-build-docker.svg?branch=master)](https://travis-ci.org/weikinhuang/ionic-android-build-docker)
+[![Docker imagelayers.io](https://badge.imagelayers.io/weikinhuang/ionic-android-build:latest.svg)](https://imagelayers.io/?images=weikinhuang/ionic-android-build:latest 'Get your own badge on imagelayers.io')
+
 ## How to use this image
 
 ### Use this image to build an ionic app
