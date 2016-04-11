@@ -1,6 +1,7 @@
 # Ionic Android Build
 
 ![Ionic Framework](http://ionicframework.com/img/ionic-logo-blue.svg)
+
 [Ionic Framework](http://ionicframework.com/) is an open source front-end SDK for developing hybrid mobile apps with web technologies.
 
 ## Docker Build Base Image
