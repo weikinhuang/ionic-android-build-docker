@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e -x
+
+# install node modules
+npm install --quiet
+# set up bower dependencies
+bower install --quiet --allow-root
+# restore ionic plugins and platforms
+ionic state reset
+# remove development plugins
+ionic plugin rm cordova-plugin-console
+# build release android apk
+ionic build --release android

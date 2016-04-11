@@ -31,9 +31,14 @@ COPY utils/android-accept-licenses /usr/bin/android-accept-licenses
 # https://github.com/travis-ci/travis-cookbooks/blob/master/community-cookbooks/android-sdk/files/default/android-wait-for-emulator
 COPY utils/android-wait-for-emulator /usr/bin/android-wait-for-emulator
 COPY utils/android-sdk-install /usr/bin/android-sdk-install
+COPY utils/create-release-apk /usr/bin/create-release-apk
 RUN chmod +x /usr/bin/android-accept-licenses \
     && chmod +x /usr/bin/android-sdk-install \
-    && chmod +x /usr/bin/android-wait-for-emulator
+    && chmod +x /usr/bin/android-wait-for-emulator \
+    && chmod +x /usr/bin/create-release-apk
+
+# create a development directory
+RUN mkdir -p /data
 
 # setup android env variables
 ENV ANDROID_HOME            /opt/android-sdk-linux
@@ -76,7 +81,7 @@ ENV ANDROID_SDK_INSTALL     platform-tools \
 # install android sdk tools
 RUN android-sdk-install "${ANDROID_SDK_INSTALL}"
 
-# install spoon for google console deploys
+# install fastlane supply for google console deploys
 # https://github.com/fastlane/fastlane/tree/master/supply
 ENV SUPPLY_VERSION          0.6.2
 RUN gem install --no-ri --no-rdoc supply -v ${SUPPLY_VERSION}
