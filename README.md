@@ -1,6 +1,6 @@
 # Ionic Android Build
 
-![Ionic Framework](https://ionicframework.com/img/ionic-logo-blue.svg)
+![Ionic Framework](http://ionicframework.com/img/ionic-logo-blue.svg)
 [Ionic Framework](http://ionicframework.com/) is an open source front-end SDK for developing hybrid mobile apps with web technologies.
 
 ## Docker Build Base Image
@@ -85,7 +85,7 @@ sudo docker run -it --rm --privileged -v /dev/bus/usb:/dev/bus/usb weikinhuang/i
 
 ## License
 
-[License information](/LICENSE) for the software contained in this image.
+[License information](https://github.com/weikinhuang/ionic-android-build-docker/LICENSE) for the software contained in this image.
 
 ## Supported Docker versions
 
