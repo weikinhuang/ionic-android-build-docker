@@ -2,7 +2,7 @@
 
 set -x -e
 
-mkdir /data
+mkdir -p /data
 cd /data
 
 ionic start test-app tabs
